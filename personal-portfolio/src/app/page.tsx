@@ -1,6 +1,7 @@
 //import Image from "next/image";
 import Navbar from './components/Navbar';
 import AboutSection from './components/AboutSection';
+import ProjectsSection from './components/ProjectsSection';
 
 export default function Home() {
   return (
@@ -23,9 +24,7 @@ export default function Home() {
       <AboutSection />
 
       {/* Projects Section */}
-      <section id="projects" className="min-h-screen flex flex-col justify-center items-center">
-        {/* Project cards */}
-      </section>
+      <ProjectsSection />
 
       {/* Contact Section */}
       <section id="contact" className="min-h-screen flex flex-col justify-center items-center">
