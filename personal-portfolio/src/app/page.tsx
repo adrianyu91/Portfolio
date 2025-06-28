@@ -2,6 +2,7 @@
 import Navbar from './components/Navbar';
 import AboutSection from './components/AboutSection';
 import ProjectsSection from './components/ProjectsSection';
+import ContactSection from './components/ContactSection';
 
 export default function Home() {
   return (
@@ -27,9 +28,7 @@ export default function Home() {
       <ProjectsSection />
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex flex-col justify-center items-center">
-        {/* Contact info */}
-      </section>
+      <ContactSection />
     </main>
   );
 }
