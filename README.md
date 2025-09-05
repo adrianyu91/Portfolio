@@ -28,7 +28,7 @@ Check it out here: https://adrian-yu.vercel.app
 ---
 
 ## 📂 Folder Structure
-app/            → Next.js app folder with pages and components
-components/     → React components (Navbar, AboutSection, ProjectsSection, ContactSection, BibleQuote)
-public/         → Static assets like images, favicon, fonts
-hooks/          → Custom React hooks
+app/            → Next.js app folder with pages and components  
+components/     → React components (Navbar, AboutSection, ProjectsSection, ContactSection, BibleQuote)  
+public/         → Static assets like images, favicon, fonts  
+hooks/          → Custom React hooks  
