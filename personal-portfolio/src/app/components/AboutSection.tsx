@@ -46,8 +46,8 @@ export default function AboutSection() {
       id="about"
       className="min-h-screen flex flex-col justify-center items-center px-4 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100"
     >
-      <h2 className="text-4xl font-semibold mb-6">About Me</h2>
-      <p className="max-w-2xl text-lg text-center mb-10">
+      <h2 className="scroll-fade text-4xl font-semibold mb-6">About Me</h2>
+      <p className="scroll-fade max-w-2xl text-lg text-center mb-10">
         I&#39;m passionate about full-stack development and love building clean,
         efficient, and user-friendly applications. I enjoy solving real-world
         problems through code and constantly learning new technologies to level
@@ -56,7 +56,7 @@ export default function AboutSection() {
         project I build.
       </p>
 
-      <div className="w-full max-w-4xl space-y-12">
+      <div className="scroll-fade w-full max-w-4xl space-y-12">
         {/* Languages row */}
         <div>
           <h3 className="text-2xl font-semibold mb-4">Languages</h3>

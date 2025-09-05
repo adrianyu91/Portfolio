@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import Image from 'next/image';
-import {SiTypescript, SiPython, SiReact, SiNextdotjs, SiNodedotjs, SiExpress } from 'react-icons/si';
+import {SiTypescript, SiPython, SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiMongodb } from 'react-icons/si';
 
 type TechItem = {
   icon?: IconType;      // for SI components
@@ -66,20 +66,20 @@ const projects: Project[] = [
     ],
   },
   {
-    title: 'Sync Budget',
-    description: 'Application to connect all your bank accounts to track spending and budgeting.',
+    title: 'Wealth Track',
+    description: 'Application to track all your bank accounts, credit cards, loans, and investments in one place. Built with Next.js, React, TypeScript, and MongoDB.',
     github: 'https://github.com/adrianyu91',// sync-budget is in progress
     images: ['/in_progress.png'],
     tech: [
       { icon: SiNextdotjs, color: '#000000', name: 'Next.js' },
       { icon: SiReact, color: '#61DAFB', name: 'React' },
       { icon: SiTypescript, color: '#3178C6', name: 'TypeScript' },
-      { imgSrc: '/azure-2.svg', name: 'Azure' },
+      { icon: SiMongodb, color: '#47A248', name: 'MongoDB' },
     ],
   },
   {
-    title: 'Fake News Detector',
-    description: 'NLP project to detect misleading news information using TF-IDF and Random Forest.',
+    title: 'Travel Companion',
+    description: '',
     github: 'https://github.com/yourusername',// in progress
     images: ['/in_progress.png'],
     tech: [
@@ -93,9 +93,9 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="min-h-screen flex flex-col items-center justify-center px-4 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
+      className= "min-h-screen flex flex-col items-center justify-center px-4 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
     >
-      <h2 className="text-4xl font-semibold mb-8">Projects</h2>
+      <h2 className="scroll-fade text-4xl font-semibold mb-8">Projects</h2>
 
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
@@ -105,7 +105,7 @@ export default function ProjectsSection() {
         loop={true}
         spaceBetween={50}
         slidesPerView={1}
-        className="w-full max-w-10xl"
+        className="scroll-fade w-full max-w-10xl"
       >
         {projects.map((project) => (
           <SwiperSlide key={project.title}>

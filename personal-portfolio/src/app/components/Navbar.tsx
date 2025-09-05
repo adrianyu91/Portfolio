@@ -1,7 +1,6 @@
 'use client';
 
 // import Link from 'next/link';
-import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   return (
@@ -13,7 +12,6 @@ const Navbar = () => {
           <li><a href="#about" className="hover:text-blue-500">About</a></li>
           <li><a href="#projects" className="hover:text-blue-500">Projects</a></li>
           <li><a href="#contact" className="hover:text-blue-500">Contact</a></li>
-          <li><ThemeToggle /></li>
         </ul>
       </div>
     </nav>
