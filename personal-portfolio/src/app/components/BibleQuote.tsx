@@ -57,7 +57,9 @@ export default function BibleQuote() {
   }, [typing]);
 
   return (
-    <p className="text-center text-gray-600 dark:text-gray-300 max-w-xl mt-4 font-serif italic min-h-[3rem]">
+    <p className="text-center max-w-xl mt-4 font-serif italic min-h-[3rem]"
+      style={{ color: 'currentColor' }}
+    >
       {displayedText}
       <span className="animate-blink">|</span>
     </p>

@@ -1,8 +1,10 @@
 'use client';
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { useTheme } from 'next-themes';
 
 export default function ContactSection() {
+  const { theme } = useTheme();
   const form = useRef<HTMLFormElement>(null);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -27,8 +29,6 @@ export default function ContactSection() {
         setSuccess(true);
         setLoading(false);
         form.current?.reset();
-
-        // Hide success message after 5 seconds
         setTimeout(() => setSuccess(false), 5000);
       })
       .catch((err) => {
@@ -38,80 +38,81 @@ export default function ContactSection() {
       });
   };
 
+  const inputBg = theme === 'dark' ? 'bg-white/5' : 'bg-black/5';
+  const textColor = theme === 'dark' ? 'text-white' : 'text-black';
+  const borderColor = theme === 'dark' ? 'border-gray-700' : 'border-gray-300';
+  const buttonBg = theme === 'dark' ? 'bg-blue-500 hover:bg-blue-600' : 'bg-blue-600 hover:bg-blue-700';
+
   return (
     <section
       id="contact"
-      className="min-h-screen flex flex-col items-center justify-center px-4 bg-gray-100 dark:bg-gray-950 text-gray-800 dark:text-gray-100"
+      className={`min-h-screen flex flex-col items-center justify-center px-4 transition-colors duration-500 ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-100'}`}
     >
-      <h2 className="text-4xl font-semibold mb-8">Contact Me</h2>
+      <h2 className={`text-4xl font-semibold mb-8 ${textColor}`}>Contact Me</h2>
 
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="w-full max-w-xl space-y-6 bg-white dark:bg-gray-900 p-8 rounded-xl shadow-md"
+        className={`w-full max-w-xl space-y-6 p-8 rounded-xl shadow-md transition-colors duration-500 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}
       >
         <div className="flex flex-col">
-          <label htmlFor="user_name" className="mb-2 font-medium">Name</label>
+          <label htmlFor="user_name" className={`mb-2 font-medium ${textColor}`}>Name</label>
           <input
             type="text"
             name="user_name"
             id="user_name"
             required
-            className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
+            className={`px-4 py-2 rounded-md border ${borderColor} ${inputBg} ${textColor}`}
           />
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="user_email" className="mb-2 font-medium">Email</label>
+          <label htmlFor="user_email" className={`mb-2 font-medium ${textColor}`}>Email</label>
           <input
             type="email"
             name="user_email"
             id="user_email"
             required
-            className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
+            className={`px-4 py-2 rounded-md border ${borderColor} ${inputBg} ${textColor}`}
           />
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="subject" className="mb-2 font-medium">Subject</label>
+          <label htmlFor="subject" className={`mb-2 font-medium ${textColor}`}>Subject</label>
           <input
             type="text"
             name="subject"
             id="subject"
             required
-            className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
+            className={`px-4 py-2 rounded-md border ${borderColor} ${inputBg} ${textColor}`}
           />
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="message" className="mb-2 font-medium">Message</label>
+          <label htmlFor="message" className={`mb-2 font-medium ${textColor}`}>Message</label>
           <textarea
             name="message"
             id="message"
             rows={5}
             required
-            className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
+            className={`px-4 py-2 rounded-md border ${borderColor} ${inputBg} ${textColor}`}
           />
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+          className={`text-white px-6 py-2 rounded-md transition ${buttonBg}`}
         >
           {loading ? 'Sending...' : 'Send Message'}
         </button>
 
         {success && (
-          <p className="text-green-600 mt-2 transition-opacity duration-500">
-            Message sent successfully!
-          </p>
+          <p className="text-green-500 mt-2 transition-opacity duration-500">Message sent successfully!</p>
         )}
 
         {error && (
-          <p className="text-red-600 mt-2 transition-opacity duration-500">
-            Something went wrong. Please try again.
-          </p>
+          <p className="text-red-500 mt-2 transition-opacity duration-500">Something went wrong. Please try again.</p>
         )}
       </form>
     </section>

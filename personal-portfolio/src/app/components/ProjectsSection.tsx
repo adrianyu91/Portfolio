@@ -6,6 +6,8 @@ import { IconType } from 'react-icons';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useTheme } from 'next-themes';
+
 
 import Image from 'next/image';
 import {SiTypescript, SiPython, SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiMongodb } from 'react-icons/si';
@@ -68,7 +70,7 @@ const projects: Project[] = [
   {
     title: 'Wealth Track',
     description: 'Application to track all your bank accounts, credit cards, loans, and investments in one place. Built with Next.js, React, TypeScript, and MongoDB.',
-    github: 'https://github.com/adrianyu91',// sync-budget is in progress
+    github: 'https://github.com/adrianyu91',
     images: ['/in_progress.png'],
     tech: [
       { icon: SiNextdotjs, color: '#000000', name: 'Next.js' },
@@ -89,13 +91,20 @@ const projects: Project[] = [
   },
 ];
 
+
 export default function ProjectsSection() {
+  const { theme } = useTheme();
+  const textColor = theme === 'dark' ? 'text-white' : 'text-black';
+  const descColor = theme === 'dark' ? 'text-gray-300' : 'text-gray-800';
+  const bgColor = theme === 'dark' ? 'bg-[#0f172a]' : 'bg-white';
+  
+
   return (
     <section
       id="projects"
-      className= "min-h-screen flex flex-col items-center justify-center px-4 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
+      className={`min-h-screen flex flex-col justify-center items-center px-4 transition-colors duration-500 ${bgColor}`}
     >
-      <h2 className="scroll-fade text-4xl font-semibold mb-8">Projects</h2>
+      <h2 className={`scroll-fade text-4xl font-semibold mb-8 ${textColor}`}>Projects</h2>
 
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
@@ -113,12 +122,7 @@ export default function ProjectsSection() {
               {/* Left: Image(s) */}
               <div className="w-full md:w-1/2">
                 {project.images.length > 1 ? (
-                  <Swiper
-                    modules={[Navigation]}
-                    navigation
-                    spaceBetween={10}
-                    className="rounded-lg"
-                  >
+                  <Swiper modules={[Navigation]} navigation spaceBetween={10} className="rounded-lg">
                     {project.images.map((src, idx) => (
                       <SwiperSlide key={idx}>
                         <Image
@@ -144,14 +148,15 @@ export default function ProjectsSection() {
 
               {/* Right: Text */}
               <div className="w-full md:w-1/2 space-y-4">
-                <h3 className="text-2xl font-bold">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{project.description}</p>
+                <h3 className={`text-2xl font-bold ${textColor}`}>{project.title}</h3>
+                <p className={`${descColor}`}>{project.description}</p>
+
                 {project.tech && (
                   <div className="flex flex-wrap items-center gap-3 mt-2">
                     {project.tech.map((techItem, idx) => (
                       <div
                         key={idx}
-                        className="bg-gray-200 dark:bg-gray-800 rounded-full p-2 flex items-center justify-center shadow"
+                        className="rounded-full p-2 flex items-center justify-center shadow"
                         title={techItem.name}
                       >
                         {techItem.icon ? (
