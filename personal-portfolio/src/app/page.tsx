@@ -10,39 +10,39 @@ import ContactSection from './components/ContactSection';
 import { useScrollFade } from "./hooks/useScrollFade";
 import { useTheme } from 'next-themes';
 
-
 export default function Home() {
   const { theme } = useTheme();
   useScrollFade();
 
   return (
-    <main className="scroll-smooth">
-
+    <main className="scroll-smooth overflow-x-hidden">
       {/* Navbar */}
       <Navbar />
 
       {/* Hero Section */}
       <section
         id="home"
-        className={`min-h-screen flex flex-col justify-center items-center
+        className={`flex flex-col justify-center items-center
+                    min-h-[80vh] sm:min-h-[90vh] px-4 sm:px-6 md:px-8
                     transition-colors duration-500
                     ${theme === 'dark' ? 'bg-[#0f172a] text-white' : 'bg-white text-black'}`}
       >
-        <h1 className="text-6xl font-extrabold opacity-0 translate-y-10 animate-fadeInUp">
+        <h1 className="text-4xl sm:text-6xl font-extrabold opacity-0 translate-y-10 animate-fadeInUp text-center leading-tight sm:leading-snug max-w-full">
           Adrian Yu
         </h1>
-        <p className="text-2xl mt-4 opacity-0 translate-y-10 animate-fadeInUp delay-300">
+
+        <p className="text-lg sm:text-2xl mt-4 sm:mt-6 opacity-0 translate-y-10 animate-fadeInUp delay-300 text-center max-w-xs sm:max-w-md">
           Computer Engineering Student
         </p>
 
         {/* Social Links */}
-        <div className="scroll-fade flex gap-6 mt-14">
+        <div className="scroll-fade flex gap-4 sm:gap-6 mt-16 sm:mt-14 flex-wrap justify-center">
           <a
             href="mailto:adriancsyu@gmail.com"
             className="hover:text-blue-600 dark:hover:text-blue-400 transition"
             aria-label="Email"
           >
-            <FaEnvelope size={28} color="currentColor" />
+            <FaEnvelope className="w-6 h-6 sm:w-7 sm:h-7" />
           </a>
           <a
             href="https://github.com/adrianyu91"
@@ -51,7 +51,7 @@ export default function Home() {
             className="hover:text-blue-600 dark:hover:text-blue-400 transition"
             aria-label="GitHub"
           >
-            <FaGithub size={28} color="currentColor" />
+            <FaGithub className="w-6 h-6 sm:w-7 sm:h-7" />
           </a>
           <a
             href="https://www.linkedin.com/in/adrian-yu-740509215/"
@@ -60,26 +60,30 @@ export default function Home() {
             className="hover:text-blue-600 dark:hover:text-blue-400 transition"
             aria-label="LinkedIn"
           >
-            <FaLinkedin size={28} color="currentColor" />
+            <FaLinkedin className="w-6 h-6 sm:w-7 sm:h-7" />
           </a>
-
         </div>
 
-
-        <div className="scroll-fade flex flex-col items-center gap-4 mt-14">
+        {/* Bible Quote */}
+        <div className="mt-8 sm:mt-12 w-full max-w-xs sm:max-w-xl text-center">
           <BibleQuote />
         </div>
-      </section>
+    </section>
 
       {/* About Section */}
-      <AboutSection />
+      <section className={`py-16 sm:py-24 transition-colors duration-500 ${theme === 'dark' ? 'bg-[#0f172a] text-white' : 'bg-white text-black'}`}>
+          <AboutSection />
+      </section>
 
       {/* Projects Section */}
-      <ProjectsSection />
+      <section className={`py-16 sm:py-24 transition-colors duration-500 ${theme === 'dark' ? 'bg-[#0f172a] text-white' : 'bg-gray-100 text-black'}`}>
+        <ProjectsSection />
+      </section>
 
       {/* Contact Section */}
-      <ContactSection />
-
+      <section className={`py-16 sm:py4 transition-colors duration-500 ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-gray-100 text-black'}`}>
+          <ContactSection />
+      </section>
     </main>
   );
 }

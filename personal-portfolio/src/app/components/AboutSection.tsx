@@ -44,27 +44,26 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className={`min-h-screen flex flex-col justify-center items-center px-4
-                  transition-colors duration-500
+      className={`py-16 px-4 sm:px-6 md:px-8 transition-colors duration-500
                   ${theme === 'dark' ? 'bg-[#0f172a] text-white' : 'bg-white text-black'}`}
     >
-      <h2 className="scroll-fade text-4xl font-semibold mb-6">
-        About Me
-      </h2>
-      <p className="scroll-fade max-w-2xl text-lg text-center mb-10">
-        I&apos;m passionate about full-stack development and love building clean,
-        efficient, and user-friendly applications. I enjoy solving real-world
-        problems through code and constantly learning new technologies to level
-        up my skills. My journey in Computer Engineering has pushed me to think
-        both logically and creatively, and I bring that mindset into every
-        project I build.
-      </p>
+      <div className="max-w-4xl mx-auto flex flex-col items-center">
+        <h2 className="scroll-fade text-4xl sm:text-5xl font-semibold mb-6 text-center">
+          About Me
+        </h2>
+        <p className="scroll-fade max-w-2xl text-lg sm:text-xl text-center mb-12">
+          I&apos;m passionate about full-stack development and love building clean,
+          efficient, and user-friendly applications. I enjoy solving real-world
+          problems through code and constantly learning new technologies to level
+          up my skills. My journey in Computer Engineering has pushed me to think
+          both logically and creatively, and I bring that mindset into every
+          project I build.
+        </p>
 
-      <div className="scroll-fade w-full max-w-4xl space-y-12">
         {/* Languages */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-4">Languages</h3>
-          <div className="flex flex-wrap justify-center gap-6">
+        <div className="w-full mb-12">
+          <h3 className="scroll-fade text-2xl font-semibold mb-4 text-center">Languages</h3>
+          <div className="scroll-fade flex flex-wrap justify-center gap-6">
             {languages.map(({ icon, name }) => (
               <div key={name} className="flex flex-col items-center text-center w-20">
                 <div className="h-10 flex items-center justify-center">{icon}</div>
@@ -75,9 +74,9 @@ export default function AboutSection() {
         </div>
 
         {/* Technologies */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-4">Technologies</h3>
-          <div className="flex flex-wrap justify-center gap-6">
+        <div className="w-full">
+          <h3 className="scroll-fade text-2xl font-semibold mb-4 text-center">Technologies</h3>
+          <div className="scroll-fade flex flex-wrap justify-center gap-6">
             {technologies.map(({ icon, name }) => (
               <div key={name} className="flex flex-col items-center text-center w-20">
                 <div className="h-10 flex items-center justify-center">{icon}</div>
