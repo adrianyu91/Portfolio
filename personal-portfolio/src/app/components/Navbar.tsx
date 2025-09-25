@@ -6,18 +6,18 @@ import ThemeToggle from './ThemeToggle';
 import { HiMenu, HiX } from 'react-icons/hi';
 
 const Navbar = () => {
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === 'dark';
+  const { theme } = useTheme();
+  const textColor = theme === 'dark' ? 'text-white' : 'text-black';
+  const bgColor = theme === 'dark' ? 'bg-[#0f172a]' : 'bg-white';
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const sections = ['home', 'about', 'projects', 'contact'];
 
   return (
     <nav
-      className={`sticky top-0 z-50 backdrop-blur-md transition-colors duration-500 ${
-        isDark ? 'bg-[#0f172a]/90 text-white' : 'bg-white/90 text-gray-900'
-      }`}
+      className={`sticky top-0 z-50 backdrop-blur-md transition-colors duration-500 shadow-md ${bgColor} ${textColor}`}
     >
+
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo / Name */}
         <div className="text-xl font-bold">Adrian Yu</div>
@@ -63,9 +63,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div
-          className={`md:hidden flex flex-col items-center space-y-4 py-4 transition-all duration-300 ${
-            isDark ? 'bg-[#0f172a] text-white' : 'bg-white text-gray-900'
-          }`}
+          className={`md:hidden flex flex-col items-center space-y-4 py-4 transition-all duration-300 ${bgColor} ${textColor}`}
         >
           {sections.map((section) => (
             <a
