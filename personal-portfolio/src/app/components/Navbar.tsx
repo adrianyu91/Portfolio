@@ -31,7 +31,7 @@ const Navbar = () => {
           ))}
           <li>
             <a
-              href="/resume.pdf"
+              href="/Adrian_Yu_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-blue-500 transition-colors duration-300"
