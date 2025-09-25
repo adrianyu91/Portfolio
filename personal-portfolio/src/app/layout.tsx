@@ -1,7 +1,9 @@
+"use client";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import ClientProviders from './components/ClientProviders';
+import ThemeMeta from './components/ThemeMeta';
 
 // Font setup
 import { Geist, Geist_Mono } from "next/font/google";
@@ -41,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ClientProviders>
+          <ThemeMeta />
           {children}
           <Analytics />
         </ClientProviders>
@@ -48,3 +51,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
+
